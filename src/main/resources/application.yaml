@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: activity-api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: jsonplaceholder-users
+              uri: ${JSONPLACEHOLDER_URL:https://jsonplaceholder.typicode.com}
+              predicates:
+                - Path=/api//users
+                - Method=GET
+              filters:
+                - SetPath=/users
+
+            - id: jsonplaceholder-posts
+              uri: ${JSONPLACEHOLDER_URL:https://jsonplaceholder.typicode.com}
+              predicates:
+                - Path=/api//posts
+                - Method=GET
+              filters:
+                - SetPath=/posts
+app:
+  auth:
+    username: ${GATEWAY_USERNAME:student}
+    password: ${GATEWAY_PASSWORD:gateway123}
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:c9a9c25dd7a7cee965c8fd7800db3a1b3f274c365a25814342ddf79738005b64}
+    expiration-seconds: 3600
