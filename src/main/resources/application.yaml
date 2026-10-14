@@ -12,7 +12,7 @@ spring:
             - id: jsonplaceholder-users
               uri: ${JSONPLACEHOLDER_URL:https://jsonplaceholder.typicode.com}
               predicates:
-                - Path=/api//users
+                - Path=/api/users
                 - Method=GET
               filters:
                 - SetPath=/users
@@ -20,7 +20,7 @@ spring:
             - id: jsonplaceholder-posts
               uri: ${JSONPLACEHOLDER_URL:https://jsonplaceholder.typicode.com}
               predicates:
-                - Path=/api//posts
+                - Path=/api/posts
                 - Method=GET
               filters:
                 - SetPath=/posts
