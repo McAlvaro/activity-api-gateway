@@ -1,0 +1,13 @@
+.git
+.idea
+target
+.env
+README.md
+
+# IDE and local build artifacts
+.settings
+.classpath
+.project
+.vscode
+*.iml
+*.log

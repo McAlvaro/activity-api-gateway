@@ -1,0 +1,11 @@
+services:
+  api-gateway:
+    build:
+      context: .
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    environment:
+      GATEWAY_USERNAME: ${GATEWAY_USERNAME:-student}
+      GATEWAY_PASSWORD: ${GATEWAY_PASSWORD:-gateway123}
+      JSONPLACEHOLDER_URL: ${JSONPLACEHOLDER_URL:-https://jsonplaceholder.typicode.com}
+      JWT_SECRET: ${JWT_SECRET:-c9a9c25dd7a7cee965c8fd7800db3a1b3f274c365a25814342ddf79738005b64}
