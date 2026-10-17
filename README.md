@@ -8,6 +8,7 @@ API gateway reactivo que autentica con JWT y reenvía solicitudes de usuarios y 
 - Spring Boot
 - Spring Cloud Gateway
 - Docker y Docker Compose
+- Caddy
 
 ## Requisitos
 
@@ -29,6 +30,10 @@ El servicio queda disponible en `http://localhost:8080`. Para detenerlo y elimin
 ```bash
 docker compose down --remove-orphans
 ```
+
+## Despliegue
+
+La instancia publicada está disponible en [https://gateway.codedocs.tech](https://gateway.codedocs.tech). El despliegue usa Caddy como proxy inverso con HTTPS y el archivo `docker-compose.dev.yml`.
 
 ### Configuración de demostración
 
