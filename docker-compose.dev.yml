@@ -1,0 +1,25 @@
+services:
+  api-gateway:
+    build:
+      context: .
+    restart: unless-stopped
+    environment:
+      GATEWAY_USERNAME: ${GATEWAY_USERNAME:-student}
+      GATEWAY_PASSWORD: ${GATEWAY_PASSWORD:-gateway123}
+      JSONPLACEHOLDER_URL: ${JSONPLACEHOLDER_URL:-https://jsonplaceholder.typicode.com}
+      JWT_SECRET: ${JWT_SECRET}
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - api-gateway
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+volumes:
+  caddy_data:
+  caddy_config:
